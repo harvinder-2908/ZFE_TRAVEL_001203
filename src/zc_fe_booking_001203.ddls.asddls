@@ -18,6 +18,7 @@ define view entity ZC_FE_Booking_001203
       element: 'CustomerID'
     }
   } ]
+  @ObjectModel.text.element : [ 'CustFName' ]
   CustomerID,
   @Consumption.valueHelpDefinition: [ {
     entity: {
@@ -25,7 +26,11 @@ define view entity ZC_FE_Booking_001203
       element: 'AirlineID'
     }
   } ]
+  _Customer.FirstName as CustFName,
+    @ObjectModel.text.element : [ 'CarrierName' ]
   CarrierID,
+  _Carrier.Name as CarrierName,
+  _Carrier.AirlinePicURL as AirlineLogo,
   @Consumption.valueHelpDefinition: [ {
     entity: {
       name: 'zi_fe_flig_001203', 
@@ -45,6 +50,7 @@ define view entity ZC_FE_Booking_001203
       element: 'CurrencyCode'
     } ]
   } ]
+    @ObjectModel.text.element : [ 'CustFName' ]
   ConnectionID,
   FlightDate,
   @Semantics.amount.currencyCode: 'CurrencyCode'

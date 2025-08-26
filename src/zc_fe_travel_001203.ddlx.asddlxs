@@ -19,34 +19,87 @@ annotate entity ZC_FE_Travel_001203 with
         label: 'Overall Status',
         position: 20,
         targetQualifier: 'OverallStatus',
-        type: #DATAPOINT_REFERENCE,    
+        type: #DATAPOINT_REFERENCE,
         purpose: #HEADER
+  },
+  {
+      label: 'General Information',
+      position: 10,
+      type: #COLLECTION,
+      id: 'GeneralInfo'
+  },
+    {
+      label: 'Contact Information',
+      position: 20,
+      type: #COLLECTION,
+      id: 'ContactInfo'
+  },
+  {
+    label: 'General',
+    id: 'Travel',
+    type: #IDENTIFICATION_REFERENCE,
+    parentId: 'GeneralInfo',
+    position: 10
+  },
+  { 
+      label: 'Prices',
+      targetQualifier: 'Prices',
+      type: #FIELDGROUP_REFERENCE,
+      parentId: 'GeneralInfo',
+      position: 20
+  },
+  { 
+      label: 'Dates',
+      targetQualifier: 'Dates',
+      type: #FIELDGROUP_REFERENCE,
+      parentId: 'GeneralInfo',
+      position: 30
+  },
+  { 
+    label: 'Bookings',
+    id: 'Bookings',
+    type: #LINEITEM_REFERENCE,
+    targetElement: '_Booking',
+    position: 30
   }
+
   ]
+
+  @UI.identification: [{
+  position: 10 }]
+  Description;
 
   @UI.lineItem: [{ position: 10 }]
   TravelID;
   @UI.lineItem: [{ position: 20 }]
   @UI.selectionField: [ { position: 10 } ]
+  @UI.identification: [{
+position: 30 }]
   AgencyID;
   @UI.lineItem: [{ position: 30 }]
   @UI.selectionField: [ { position: 20 } ]
+  @UI.identification: [{
+position: 20 }]
   CustomerID;
   @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Dates' }]
   BeginDate;
+   @UI.fieldGroup: [{ position: 20, qualifier: 'Dates' }]
   @UI.lineItem: [{ position: 50 }]
   EndDate;
   @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Prices' }]
   BookingFee;
   @UI.lineItem: [{ position: 70 }]
   @UI.dataPoint: {
     qualifier: 'TotalPrice'
   }
+  @UI.fieldGroup: [{ position: 20, qualifier: 'Prices' }]
   TotalPrice;
   @UI.lineItem: [{ position: 80 }]
   @UI.selectionField: [ { position: 30 } ]
   @UI.lineItem: [{criticality: 'OverallStatusCriticality'}]
-  @UI.dataPoint: { 
+  @UI.dataPoint: {
   qualifier: 'OverallStatus',
   criticality: 'OverallStatusCriticality' }
   OverallStatus;

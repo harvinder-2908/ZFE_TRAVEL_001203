@@ -26,7 +26,9 @@ define root view entity ZC_FE_Travel_001203
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.90
       @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_CUSTOMER', element: 'CustomerID'} } ]
+      @ObjectModel.text.element: [ 'CustomerFName' ]
       CustomerID,
+      _Customer.FirstName as CustomerFName,
       BeginDate,
       EndDate,
       @Semantics.amount.currencyCode: 'CurrencyCode'
